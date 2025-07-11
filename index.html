@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">
+    <meta name="description" content="Versión para Android del Tute a Cuatro">
+	<meta name="keywords" content="Tute,Brisca,Android,Juego,Cartas,Solitario">
+	<meta name="author" content="AurumLinux">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, viewport-fit=cover" />
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /-->
+    <link rel="stylesheet" href="css/index.css">
+	<link rel="Shortcut Icon" href="img/icon.png" type="image/x-icon" />
+    <script type="text/javascript" src="cordova.js" defer></script>
+    <script src="js/easing.js" defer></script>
+    <script src="js/grid.js" defer></script>
+    <script src="js/cordova_functions.js" defer></script>
+    <script src="js/variables.js" defer></script>
+    <script src="js/mouseEvents.js" defer></script>
+    <script src="js/engine.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/index.js" defer></script>
+    <title>Tute a Cuatro</title>
+    <script type="text/javascript">
+        function changeRes(){
+            // número e=2.718
+            var ratio = window.devicePixelRatio || 1;
+            var viewportWidth = window.innerWidth * ratio;
+            var viewportHeight = window.innerHeight * ratio;
+            var scale = 1/ratio;
+            var viewportContent = "user-scalable=no, initial-scale="+scale+", width="+viewportWidth+", minimum-scale="+scale+", maximum-scale="+scale+", viewport-fit=cover";
+            document.querySelector('meta[name="viewport"]').setAttribute("content", viewportContent);
+         //   console.log(window.innerWidth);
+         //   var ratio = window.devicePixelRatio || 1;
+         //   console.log(ratio);
+         //   var w = screen.width * ratio;
+         //   var h = screen.height * ratio;
+         //   console.log(w+"x"+h);
+         //   console.log(window.screen.width+"x"+window.screen.height);
+            // alert(w+"x"+h+"\n"+window.screen.width+"x"+window.screen.height)
+		}
+
+        changeRes();
+    </script>
+</head>
+<body>
+    <!-- MESA -->
+    <div id="mesa">
+        <div id="monton"></div>
+        <canvas id="Barridas"></canvas>
+        <canvas id="J4"></canvas>
+        <canvas id="J2"></canvas>
+        <canvas id="J3"></canvas>
+        <canvas id="J1"></canvas>
+        <canvas id="Jugada"></canvas>
+        <canvas id="Selected"></canvas>
+        <div id="turno1"></div><div id="turno2"></div><div id="turno3"></div><div id="turno4"></div>
+        <div id="marcador">
+            <div id="pinteMarcador"></div>
+            <div id="garbanzo11" class="garbanzo"></div><div id="garbanzo12" class="garbanzo"></div><div id="garbanzo13" class="garbanzo"></div>
+            <div id="garbanzo14" class="garbanzo"></div><div id="garbanzo15" class="garbanzo"></div><div id="garbanzo16" class="garbanzo"></div>
+            <div id="garbanzo17" class="garbanzo"></div>
+            <div id="garbanzo21" class="garbanzo"></div><div id="garbanzo22" class="garbanzo"></div><div id="garbanzo23" class="garbanzo"></div>
+            <div id="garbanzo24" class="garbanzo"></div><div id="garbanzo25" class="garbanzo"></div><div id="garbanzo26" class="garbanzo"></div>
+            <div id="garbanzo27" class="garbanzo"></div>
+            <div id="tantos1">0</div>
+            <div id="tantos2">0</div>
+            <div id="mensajes">Esto es un mensaje</div>
+        </div>
+        <canvas id="Testing"></canvas>
+        <div id="notificationBackground">
+            <span id="notifGanadorRonda"></span>
+            <span id="notifPuntos"></span>
+            <span id="notifSumar"></span>
+            <span id="notifGanadorGeneral"></span>
+            <span id="notifGarbanzos"></span>
+            <span id="notifTocar"></span>
+        </div>
+        <div id="backButton" ontouchend="backButtonPressed(); terminarPartida();" onmouseup="backButtonPressed(); terminarPartida();"></div>
+        <div id="botonCante">CANTAR</div>
+    </div>
+
+    <!-- MENU -->
+    <div id="menu" style="display: block;">
+        <div id="menuHeader"></div>
+        <div id="menuBtns">
+            <button id="btnReanudar" ontouchstart="pulsar(this,true);" ontouchend="pulsar(this,false);" onclick="reanudarPartida();">Reanudar</button>
+            <button id="btnNuevaPartida" ontouchstart="pulsar(this,true);" ontouchend="pulsar(this,false);" onclick="reiniciarPartida();">Iniciar</button>
+            <button id="btnOpciones" ontouchstart="pulsar(this,true);" ontouchend="pulsar(this,false);" onclick="setPage('options');">Opciones</button>
+            <button id="btnSalir" ontouchstart="pulsar(this,true);" ontouchend="pulsar(this,false);" onclick="quitApp();">Salir</button>
+        </div>
+        <div id="menuSocial">
+            <button id="social1" ontouchend="twitter();"></button>
+            <button id="social2" ontouchend="rateApp();"></button>
+            <button id="social3" ontouchend="shareApp();"></button>
+        </div>
+        <div id="menuFooter"></div>
+    </div>
+
+    <!-- OPTIONS -->
+    <div id="options">
+        <div id="tit_options">Opciones</div>
+        <button id="opt_mus" ontouchstart="pulsar(this,true);" ontouchend="pulsar(this,false); setOption(this);">
+            Reproducir Música
+            <div id="opt_mus_inf">OFF</div>
+        </button>
+        <button id="opt_resaltar" ontouchstart="pulsar(this,true);" ontouchend="pulsar(this,false); setOption(this);">
+            Resaltar Cartas Posibles
+            <div id="opt_resaltar_inf">ON</div>
+        </button>
+        <button id="opt_ordenar" ontouchstart="pulsar(this,true);" ontouchend="pulsar(this,false); setOption(this);">
+            Auto Ordenar Cartas
+            <div id="opt_ordenar_inf">ON</div>
+        </button>
+        <button id="opt_volver" ontouchstart="pulsar(this,true);" ontouchend="pulsar(this,false);" onclick="setPage('menu');">Volver</button>
+        <div id="version">version</div>
+    </div>
+
+</body>
+</html>

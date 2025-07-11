@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="000017" id="com.aurumque.tuteacuatro" version="0.17" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Tute A Cuatro</name>
+    <description>
+        Juego Tute a Cuatro para Smartphones
+    </description>
+    <author email="brucomis@gmail.com" href="https://brucomis.github.io">
+        Brucomis Solo Developer
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="*" />
+    
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/uses-permission" xmlns:android="http://schemas.android.com/apk/res/android">
+            <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+        </edit-config>
+    </platform>
+    
+    <preference name="Fullscreen" value="true" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="BackgroundColor" value="0x000000"/>
+    
+    <!-- Android -->
+    <preference name="KeepRunning" value="true" />
+    
+	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
+	<preference name="android-minSdkVersion" value="24" />
+    <preference name="android-targetSdkVersion" value="32" />
+    <preference name="android-compileSdkVersion" value="32" />
+	<preference name="AndroidXEnabled" value="true" />
+	 
+	 <!-- iOS -->
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaTypesRequiringUserActionForPlayback" value="none" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="SuppressesLongPressGesture" value="false" />
+    <preference name="Suppresses3DTouchGesture" value="false" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+
+    <platform name="ios">
+        <preference name="deployment-target" value="12.0" />
+        <preference name="SwiftVersion" value="5.3" />
+    </platform>
+
+	<!-- StatusBar -->
+	 <!--preference name="StatusBarOverlaysWebView" value="true" /-->
+	 <preference name="StatusBarBackgroundColor" value="#000000" />
+	 
+	 <!-- NavigationBar -->
+	 <!-- <preference name="NavigationBarLight" value="false" /> -->
+
+    <!-- Icons & SpashScreen -->
+    <platform name="android">
+	    <icon density="ldpi" src="www/res/icon/android/ldpi.png" />
+        <icon density="mdpi" src="www/res/icon/android/mdpi.png" />
+        <icon density="hdpi" src="www/res/icon/android/hdpi.png" />
+        <icon density="xhdpi" src="www/res/icon/android/xhdpi.png" />
+        <icon density="xxhdpi" src="www/res/icon/android/xxhdpi.png" />
+        <icon density="xxxhdpi" src="www/res/icon/android/xxxhdpi.png" /> 
+        <!-- Splashscreen  -->
+        <preference name="SplashMaintainAspectRatio" value="true"/>
+        <preference name="SplashShowOnlyFirstTime" value="true"/>
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/img/icons/splash-square.png"/>
+        <preference name="AndroidWindowSplashScreenBackground" value="#000000"/>
+    </platform>
+    
+    <platform name="ios">
+    <!--   <icon src="www/res/icon/ios/icon-1024.png" width="1024" height="1024"/>
+        <icon src="www/res/icon/ios/icon-small.png" width="29" height="29"/>
+        <icon src="www/res/icon/ios/icon-small@2x.png" width="58" height="58"/>
+        <icon src="www/res/icon/ios/icon-small@3x.png" width="87" height="87"/>
+        <icon src="www/res/icon/ios/icon-40.png" width="40" height="40"/>
+        <icon src="www/res/icon/ios/icon-40@2x.png" width="80" height="80"/>
+        <icon src="www/res/icon/ios/icon-50.png" width="50" height="50"/>
+        <icon src="www/res/icon/ios/icon-50@2x.png" width="100" height="100"/>
+        <icon src="www/res/icon/ios/icon.png" width="57" height="57"/>
+        <icon src="www/res/icon/ios/icon@2x.png" width="114" height="114"/>
+        <icon src="www/res/icon/ios/icon-60.png" width="60" height="60"/>
+        <icon src="www/res/icon/ios/icon-60@2x.png" width="120" height="120"/>
+        <icon src="www/res/icon/ios/icon-60@3x.png" width="180" height="180"/>
+        <icon src="www/res/icon/ios/icon-72.png" width="72" height="72"/>
+        <icon src="www/res/icon/ios/icon-72@2x.png" width="144" height="144"/>
+        <icon src="www/res/icon/ios/icon-76.png" width="76" height="76"/>
+        <icon src="www/res/icon/ios/icon-76@2x.png" width="152" height="152"/>
+        <icon src="www/res/icon/ios/icon-167.png" width="167" height="167"/>
+        <icon src="www/res/icon/ios/icon-83.5@2x.png" width="167" height="167"/> -->
+        <!-- Storyboard portrait -->
+        <splash src="www/res/screen/ios/Default@2x~iphone~anyany.png"/>
+        <splash src="www/res/screen/ios/Default@2x~iphone~comany.png"/>
+        <splash src="www/res/screen/ios/Default@3x~iphone~anyany.png"/>
+        <splash src="www/res/screen/ios/Default@3x~iphone~comany.png"/>
+        <splash src="www/res/screen/ios/Default@2x~ipad~anyany.png"/>
+        <splash src="www/res/screen/ios/Default@2x~ipad~comany.png"/>
+    </platform>
+    
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="SplashScreenDelay" value="2500" />
+    <preference name="FadeSplashScreenDuration" value="750"/>
+    <preference name="FadeSplashScreen" value="true"/>
+
+
+</widget>
