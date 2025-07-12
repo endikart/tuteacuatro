@@ -6,6 +6,6 @@ This proyect was created many years ago for learning purposes and it's been unch
 The cards have been taken from Basqueteur deck - https://commons.wikimedia.org/wiki/File:Baraja_espa%C3%B1ola_completa.png
 The used font is Google Font Teachers - https://fonts.google.com/specimen/Teachers
 
-Enjoy
+Enjoy it (if you find it enjoyable)
 
 Bye!
